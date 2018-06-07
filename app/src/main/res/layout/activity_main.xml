@@ -1,18 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".MainActivity"
+  android:orientation="vertical">
+
+  <TextView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="wrap_content"
+    android:text="@string/tv_result"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:textAlignment="center"
+    />
+  <TextView
+    android:id="@+id/tv_result"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="0"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:textAlignment="textEnd"
+    />
+  <EditText
+    android:id="@+id/ed_n1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/ed_n1"
+    android:inputType="number"
+    android:textAlignment="textEnd"
+    />
+  <EditText
+    android:id="@+id/ed_n2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/ed_n2"
+    android:inputType="number"
+    android:textAlignment="textEnd"
+    />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Calculator!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+  <Button
+    android:id="@+id/btn_sum"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/btn_sum"
+    android:textAlignment="center"
+    />
 
-</android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.LinearLayoutCompat>
