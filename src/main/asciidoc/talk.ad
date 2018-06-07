@@ -1,0 +1,34 @@
+= Fundamentos de testing en Aplicaciones Android
+:icons: font
+:twitter-tag: UDE
+:conference-tag:
+:talk-tag: TI/ATI
+:slide-link: http://bit.ly/jsch-comm
+:linkattrs:
+
+include::footer.ad[]
+
+[NOTE.speaker]
+====
+Documentación oficial en:
+https://developer.android.com/training/testing/fundamentals
+====
+
+== Contenido
+* Fundamentos de Testing
+* Pirámide de testing
+* Tipos de test
+* JUnit
+* Expresso
+* TDD
+* Conclusiones
+
+== Fundamentos de Testing
+== Pirámide de testing
+== Tipos de test
+== Junit
+== Expresso
+== TDD
+== Conclusiones
+
+include::self.ad[]

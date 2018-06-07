@@ -1,0 +1,5 @@
+= Charla introductoria de testing para el curso de Android de UDE
+
+== Código fuente de la presentación basado en el ejemplo de Jens Schauder en http://blog.schauderhaft.de/2018/03/25/my-tech-stack-for-slides/
+
+== Contenido tomado de https://developer.android.com/training/testing/
