@@ -34,6 +34,6 @@ public class MainActivity extends AppCompatActivity {
     int n1 = Integer.parseInt(edNumero1.getText().toString());
     int n2 = Integer.parseInt(edNumero2.getText().toString());
     int resultado = sumar.sumar(n1, n2);
-    tvResultado.setText(resultado);
+    tvResultado.setText(String.valueOf(resultado));
   }
 }
