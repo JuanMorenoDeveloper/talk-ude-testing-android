@@ -11,24 +11,90 @@ include::footer.ad[]
 [NOTE.speaker]
 ====
 Documentación oficial en:
-https://developer.android.com/training/testing/fundamentals
+https://developer.android.com/training/testing/
 ====
+== !
+image::testing-button.jpg[background, size=auto]
+[NOTE.speaker]
+====
+¿Qué es el testing de software?
 
+Es una investigación que provee información acerca de la calidad del software que se esta probando.
+Provee también información objetiva acerca de los los riesgos de implementar una funcionalidad.
+Permite detectar fallas o "bugs" en el software y verificar que el sistema está en condiciones de ser usado.
+Ver: https://en.wikipedia.org/wiki/Software_testing
+====
 == Contenido
-* Fundamentos de Testing
+* Fundamentos del Testing
 * Pirámide de testing
 * Tipos de test
 * JUnit
-* Expresso
+* Espresso
 * TDD
 * Conclusiones
 
 == Fundamentos de Testing
-== Pirámide de testing
-== Tipos de test
-== Junit
-== Expresso
+== ¿Por qué hacer testing?
+* *Retroalimentación rápida* de fallas
+* *Temprana detección de fallas* en el ciclo de desarrollo
+* *Refactoring seguro* permitiendo optimizaciones sin preocupación de las regresiones
+* *Velocidad estable en el desarrollo*, ayudando a minimizar la deuda técnica
+[NOTE.speaker]
+====
+Probar aplicaciones es una parte integral del proceso de desarrollo de aplicaciones.
+Cuando se ejecutan test a una aplicación de manera consistente, podemos verificar la exactitud, el comportamiento funcional antes de liberarla publicamente.
+Ver original en: https://developer.android.com/training/testing/
+====
+== Testing Workflow
+image::testing-workflow.png[background, size=auto]
 == TDD
+image::TDD_Global_Lifecycle.png[background, size=auto]
+
+== !
+Es una práctica de ingeniería de software que involucra otras dos prácticas:
+* Escribir las pruebas *primero* (Test First Development)
+* Refactorización (Refactoring).
+[NOTE.speaker]
+====
+Ver original en: https://en.wikipedia.org/wiki/Test-driven_development y https://es.wikipedia.org/wiki/Desarrollo_guiado_por_pruebas
+====
+
+=== Test-driven development cycle
+. Agregar un test (Entiendo el propósito de la funcionalidad)
+. Ejecutar todos los test y ver si el nuevo test falla (Debería fallar por las razones conocidas)
+. Escribir el mínimo código para que pase el test
+. Ejecutar nuevamente el test (Valida el punto anterior)
+. Refactorizar el código (Se optimiza)
+
+... Repetir
+
+== Beneficios
+== !
+image::confident.png[background, size=auto]
+[NOTE.speaker]
+====
+Dentro de los objetivos de usar TDD es incrementar la confianza en agregar cambios al sistema, lo que aumenta la productividad.
+
+además del diseño limpio.
+Normalmente una clase o funcionalidad que se puede probar tiene que tener un buen diseño.
+====
+
+== !
+image::clean-website.png[background, size=auto]
+[NOTE.speaker]
+====
+TDD favorece el diseño limpio. Normalmente una clase o funcionalidad que se puede probar tiene que tener un buen diseño.
+====
+
+== Pirámide de testing
+image::pyramid.png[background, size=auto]
+
+== Tipos de test
+//Porcentaje 70, 20 10
+== JUnit
+== Roboelectric
+== Espresso
+
 == Conclusiones
 
 include::self.ad[]
