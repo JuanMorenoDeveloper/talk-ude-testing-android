@@ -28,17 +28,18 @@ Ver: https://en.wikipedia.org/wiki/Software_testing
 * Fundamentos del Testing
 * Pirámide de testing
 * Tipos de test
-* JUnit
-* Espresso
-* TDD
+* Librerías
+* Ejemplo
 * Conclusiones
 
 == Fundamentos de Testing
+
 == ¿Por qué hacer testing?
 * *Retroalimentación rápida* de fallas
 * *Temprana detección de fallas* en el ciclo de desarrollo
 * *Refactoring seguro* permitiendo optimizaciones sin preocupación de las regresiones
 * *Velocidad estable en el desarrollo*, ayudando a minimizar la deuda técnica
+
 [NOTE.speaker]
 ====
 Probar aplicaciones es una parte integral del proceso de desarrollo de aplicaciones.
@@ -52,24 +53,24 @@ image::TDD_Global_Lifecycle.png[background, size=auto]
 
 == !
 Es una práctica de ingeniería de software que involucra otras dos prácticas:
+
 * Escribir las pruebas *primero* (Test First Development)
 * Refactorización (Refactoring).
+
 [NOTE.speaker]
 ====
 Ver original en: https://en.wikipedia.org/wiki/Test-driven_development y https://es.wikipedia.org/wiki/Desarrollo_guiado_por_pruebas
 ====
 
-=== Test-driven development cycle
+== Test-driven development cycle
 . Agregar un test (Entiendo el propósito de la funcionalidad)
 . Ejecutar todos los test y ver si el nuevo test falla (Debería fallar por las razones conocidas)
 . Escribir el mínimo código para que pase el test
 . Ejecutar nuevamente el test (Valida el punto anterior)
-. Refactorizar el código (Se optimiza)
-
-... Repetir
+. Refactorizar el código (Se optimiza) ...*Repetir el proceso*
 
 == Beneficios
-== !
+== Confianza
 image::confident.png[background, size=auto]
 [NOTE.speaker]
 ====
@@ -79,8 +80,9 @@ además del diseño limpio.
 Normalmente una clase o funcionalidad que se puede probar tiene que tener un buen diseño.
 ====
 
-== !
-image::clean-website.png[background, size=auto]
+== Diseño limpio
+image::clean-website.jpg[background, size=auto]
+
 [NOTE.speaker]
 ====
 TDD favorece el diseño limpio. Normalmente una clase o funcionalidad que se puede probar tiene que tener un buen diseño.
@@ -90,11 +92,55 @@ TDD favorece el diseño limpio. Normalmente una clase o funcionalidad que se pue
 image::pyramid.png[background, size=auto]
 
 == Tipos de test
-//Porcentaje 70, 20 10
-== JUnit
-== Roboelectric
-== Espresso
+* *Small test* (Test unitarios). Independientes de las dependencias de producción. Usan mocks
+* *Medium test*. Test de integración, se ejecutan en emuladores/dispositivos físicos
+* *Large test*. Son test de integración que ejecutan flujos completos de la interfaz de usuario. Se ejecutan en emuladores/dispositivos
+
+== ¿Qué porcentaje debo cubrir?
+* 70% Small test
+* 20% Medium test
+* 10% Large test
+
+== Librerías
+* JUnit
+* Roboelectric
+* Espresso
+
+[NOTE.speaker]
+====
+Documentación en:
+
+* JUnit: https://junit.org/junit4/
+* Espresso: https://developer.android.com/training/testing/espresso/
+* Roboelectric: http://robolectric.org/
+====
 
 == Conclusiones
+* El uso de test agrega calidad a los sistemas
+* Permiten hacer refactor con confianza
+* Deben ser independientes a nivel de datos
+
+[NOTE.speaker]
+====
+Consideraciones importantes:
+
+* Los test deben ser independientes a nivel de datos, cada uno debe tener su propio dato a probar. Para casos donde existen datos complejos considerar usar fuentes de datos tipo "factory".
+* Los test son independientes en ejecución, no se debe asumir que por default se ejecutan en cierto orden.
+* Se recomienda usar Fakes para emular funcionalidades complejas, evitando así el sobre uso de mocks. Esto lleva a que se debe usar interfaces para definir las dependencias y los @Service potencialmente implementen una o muchas interfaces pequeñas (3 métodos), evitar tener interfaces grandes.
+* Se deben probar tanto casos positivos como negativos de los métodos (validaciones).
+Por ejemplo si se espera que el método arroje una excepción se puede usar la anotación @Test(expected = ExcepcionQueDevuelveElMetodo.class)
+* *Iniciar con test unitarios y luego test de integración*.
+* La documentación para uso de JUnit y Mockito se encuentra en:
+* http://junit.org/junit4/
+* http://static.javadoc.io/org.mockito/mockito-core/2.10.0/org/mockito/Mockito.html
+
+Conceptos básicos:
+
+* Dummy: Son objetos que se envían, pero nunca se utilizan en el test. Por ejemplo, imaginemos que tenemos un objeto de la clase GestorDeTareas, que gestiona objetos Tarea, que necesita una lista de parámetros Tarea para funcionar. Si en el test solo queremos comprobar que uno de sus métodos me devuelva el número de Tareas que contiene ese gestor de tareas, podemos utilizar dummies para rellenar el gestor de tareas. Muchas veces los dummies se rellenan con valores NULL.
+* Stub: Es un objeto en el que configuras que cuando llames a un método devuelva un valor determinado. Por ejemplo, si tienes un objeto con un método que suma dos números, un stub sería un objeto que independientemente de los valores que le pases al método suma, devuelva 5.
+* Spy: Estos objetos guardan las acciones que se hacen sobre ellos. Hace una especie de seguimiento sobre qué métodos se han llamado y con qué parámetros. Cuando para que un test sea un éxito no es suficiente ver el estado de los objetos disponibles, podemos usar un spy y comprobar cosas como cuántas veces se ha llamado a un método, qué valores han devuelto, etc.
+* Mock: Muy similar a un spy, pero no solo guardan las acciones que se hacen sobre ellos, también es necesario configurar qué comportamiento esperas cuando alguien llame a alguno de sus métodos.
+* Fake: Es un objeto que implementado completamente y que funciona, como un objeto normal sin ser simulado, pero se diferencia en que está falseando algo para hacer alguna cosa más fácil de probar. Un ejemplo de esto podría ser un objeto que utiliza una base de datos en memoria en lugar de acceder a consultar la base de datos de producción.
+====
 
 include::self.ad[]
